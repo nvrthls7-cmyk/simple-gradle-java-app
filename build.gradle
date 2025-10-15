@@ -35,6 +35,13 @@ application {
     // Define the main class for the application.
     mainClassName = 'simple.gradle.java.app.App'
 }
+jar {
+    manifest {
+        attributes(
+            'Main-Class': application.mainClassName
+        )
+    }
+}
 
 test {
     // Use junit platform for unit tests
