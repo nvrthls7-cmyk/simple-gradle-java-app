@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'application'
+    id 'war' // Use 'war' plugin instead of 'application' to support JSP and WAR packaging
 }
 
 repositories {
@@ -9,27 +9,14 @@ repositories {
 }
 
 dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:4.0.1'  // Needed for Servlet/JSP support, not packaged
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.13.4'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.13.4'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4' // Add this line
-}
-
-
-application {
-    mainClass = 'simple.gradle.java.app.App'
-}
-
-jar {
-    manifest {
-        attributes(
-            'Main-Class': application.mainClass
-        )
-    }
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.13.4'
 }
 
 test {
     useJUnitPlatform()
-    // Optional: show more output for debugging
     testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
