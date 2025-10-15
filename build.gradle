@@ -33,12 +33,13 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClassName = 'simple.gradle.java.app.App'
+    mainClass = 'simple.gradle.java.app.App'
 }
+
 jar {
     manifest {
         attributes(
-            'Main-Class': application.mainClassName
+            'Main-Class': application.mainClass
         )
     }
 }
